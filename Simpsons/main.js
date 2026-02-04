@@ -21,7 +21,10 @@ const CuadroBusqueda = document.querySelector("#cuadroBusqueda");
 let idPersonaje;
 let listaPersonajes = crearAlmacenamiento();
 
-Random.addEventListener('click', ()=>{ construir(generarIdRandom(CantPersonajes)) });
+Random.addEventListener('click', ()=>{ 
+    idPersonaje = generarIdRandom(CantPersonajes); 
+    construir(idPersonaje); 
+});
 BotonGusta.addEventListener('click', iterarLista);
 BotonLista.addEventListener('click', mostrarLista);
 BotonCerrar.addEventListener('click', () => { DivContLista.classList.add("hide"); })
@@ -32,7 +35,7 @@ BotonBusqueda.addEventListener('click', ()=>{
     construir(contenido);
 });
 
-function construir(idPersonaje) {
+function construir(id) {
     if (DivCarga.className.lastIndexOf(" ") != -1) {
         DivImg.classList.add("hide");
         DivNombre.classList.add("hide");
@@ -42,7 +45,7 @@ function construir(idPersonaje) {
         DivCarga.classList.remove("hide");
     }
 
-    fetch(UrlBase + idPersonaje).then(
+    fetch(UrlBase + id).then(
         (res) => {
             return res.json();
         }
@@ -82,6 +85,7 @@ function generarIdRandom(idMax) {
 }
 
 function iterarLista() {
+    console.log(idPersonaje)
     if (
         idPersonaje !== undefined &&
         !(estaRepetido(idPersonaje))
