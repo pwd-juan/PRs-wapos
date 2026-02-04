@@ -14,23 +14,25 @@ const BotonLista = document.querySelector("#lista");
 const BotonCerrar = document.querySelector("#listaFavs header button");
 const UrlBase = "https://thesimpsonsapi.com/api/characters/";
 const UrlBaseImg = "https://cdn.thesimpsonsapi.com/500";
-const KeyApi = "sk_1c21b95b711340fb54630eecda5b90fcd6c658e012744d46";
-const VoiceID = "oSA216wvYj8MfmJvIa5M";
 
-let audio;
+const BotonBusqueda = document.querySelector("#botonBusqueda");
+const CuadroBusqueda = document.querySelector("#cuadroBusqueda");
 
 let idPersonaje;
 let listaPersonajes = crearAlmacenamiento();
 
-Random.addEventListener('click', construir);
+Random.addEventListener('click', ()=>{ construir(generarIdRandom(CantPersonajes)) });
 BotonGusta.addEventListener('click', iterarLista);
 BotonLista.addEventListener('click', mostrarLista);
 BotonCerrar.addEventListener('click', () => { DivContLista.classList.add("hide"); })
 DivGaleria.addEventListener('click', (e) => { eliminarDeLista(e) })
+BotonBusqueda.addEventListener('click', ()=>{
+    let contenido = parseInt(CuadroBusqueda.value, 10);
+    if (!contenido) return;
+    construir(contenido);
+});
 
-function construir() {
-    idPersonaje = generarIdRandom(CantPersonajes);
-
+function construir(idPersonaje) {
     if (DivCarga.className.lastIndexOf(" ") != -1) {
         DivImg.classList.add("hide");
         DivNombre.classList.add("hide");
@@ -113,15 +115,13 @@ function recuperarDatos() {
                 (json) => {
                     let article = document.createElement("article");
                     let img = document.createElement("img");
-                    let h2 = document.createElement("h2");
                     let h3 = document.createElement("h3");
                     let button = document.createElement("button");
                     let imgButton = document.createElement("img");
                     button.classList.add("boton");
 
                     img.src = UrlBaseImg + json["portrait_path"];
-                    h2.textContent = json["name"];
-                    h3.textContent = json["status"];
+                    h3.textContent = 'ID: ' + json["id"];
                     imgButton.src = "img/x.png";
                     imgButton.alt = "Icono boton cerrar.";
                     imgButton.id = id;
@@ -130,7 +130,6 @@ function recuperarDatos() {
                     button.appendChild(imgButton);
 
                     article.appendChild(img);
-                    article.appendChild(h2);
                     article.appendChild(h3);
                     article.appendChild(button);
                     DivGaleria.appendChild(article);
