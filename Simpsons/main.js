@@ -32,6 +32,7 @@ DivGaleria.addEventListener('click', (e) => { eliminarDeLista(e) })
 BotonBusqueda.addEventListener('click', ()=>{
     let contenido = parseInt(CuadroBusqueda.value, 10);
     if (!contenido) return;
+    idPersonaje = contenido;
     construir(contenido);
 });
 
