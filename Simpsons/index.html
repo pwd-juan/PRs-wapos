@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <script src="main.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
 
     <title>The Simpsons</title>
 </head>
+
 <body>
     <header>
         <h1>Los Simpsons</h1>
@@ -25,7 +30,30 @@
             <img class="hide" src="" alt="Todavía no se ha cargado ningún Simpson.">
             <h2 class="hide"></h2>
             <h3 class="hide"></h3>
+            <div id="genero" class="hide">
+                <img src="" alt="Todavía no hay genero.">
+            </div>
+        </div>
+
+        <div id="botones">
+            <button id="fav" class="boton">
+                <img src="img/me-gusta.png" alt="Icono de me gusta.">
+            </button>
+            <button id="lista" class="boton">
+                <img src="img/lista.png" alt="Icono para la lista.">
+            </button>
+        </div>
+
+        <div id="listaFavs" class="hide">
+            <header>
+                <button class="boton">
+                    <img src="img/x.png" alt="Icono boton cerrar.">
+                </button>
+            </header>
+            <main>
+            </main>
         </div>
     </main>
 </body>
+
 </html>
